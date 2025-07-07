@@ -1,6 +1,6 @@
 # Site settings
 title: "My Blog"
-description: "A personal blog about technology, life, and everything in between"
+description: "A private blog about life and everything else."
 author: "Qingshuo Song"
 email: "qsong@wpi.edu"
 baseurl: "/blogs1" # the subpath of your site, e.g. /blog
