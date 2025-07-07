@@ -4,6 +4,7 @@ title: "Getting Started with GitHub Pages"
 date: 2025-07-06 11:00:00 -0000
 categories: [web-development, github]
 tags: [github-pages, jekyll, tutorial]
+published: false
 ---
 
 GitHub Pages is an excellent way to host your blog or website for free. In this post, I'll walk you through the basics of setting up a blog with GitHub Pages and Jekyll.
