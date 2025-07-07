@@ -605,6 +605,33 @@ a:hover {
   margin: 0;
 }
 
+/* Post Images */
+.post-image {
+  max-width: 100%;
+  height: auto;
+  width: 400px; /* Adjust this value to make images smaller/larger */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem auto;
+  display: block;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+}
+
+/* Responsive image sizing */
+@media (max-width: 480px) {
+  .post-image {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-menu {
