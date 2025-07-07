@@ -1,0 +1,52 @@
+---
+layout: default
+---
+
+<div class="hero-section">
+  <div class="hero-content">
+    <h1>{{ site.title }}</h1>
+    <p class="hero-description">{{ site.description }}</p>
+  </div>
+</div>
+
+<div class="home-content">
+  <section class="recent-posts">
+    <h2>Recent Posts</h2>
+    
+    {% if site.posts.size > 0 %}
+      <div class="posts-grid">
+        {% for post in site.posts limit:6 %}
+          <article class="post-card">
+            <div class="post-meta">
+              <time datetime="{{ post.date | date_to_xmlschema }}">
+                {{ post.date | date: "%B %d, %Y" }}
+              </time>
+              {% if post.categories.size > 0 %}
+                <span class="categories">
+                  {% for category in post.categories %}
+                    <span class="category">{{ category }}</span>
+                  {% endfor %}
+                </span>
+              {% endif %}
+            </div>
+            <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+            <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+            <a href="{{ post.url | relative_url }}" class="read-more">Read More</a>
+          </article>
+        {% endfor %}
+      </div>
+      
+      <div class="view-all-posts">
+        <a href="{{ '/posts/' | relative_url }}" class="btn btn-primary">View All Posts</a>
+      </div>
+    {% else %}
+      <p class="no-posts">No posts yet. Stay tuned!</p>
+    {% endif %}
+  </section>
+
+  <section class="about-preview">
+    <h2>About</h2>
+    <p>Welcome to my blog! I write about technology, programming, and my thoughts on various topics. Feel free to explore and get in touch if you have any questions or suggestions.</p>
+    <a href="{{ '/about/' | relative_url }}" class="btn btn-outline">Learn More About Me</a>
+  </section>
+</div>

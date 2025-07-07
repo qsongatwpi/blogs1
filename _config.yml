@@ -1,0 +1,42 @@
+# Site settings
+title: "My Blog"
+description: "A personal blog about technology, life, and everything in between"
+author: "Qingshuo Song"
+email: "qsong@wpi.edu"
+baseurl: "/blogs1" # the subpath of your site, e.g. /blog
+url: "https://qsongatwpi.github.io" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Pagination
+paginate: 5
+paginate_path: "/page:num/"
+
+# Social links
+github_username: qsongatwpi
+
+# Navigation
+navigation:
+  - title: "Home"
+    url: "/"
+  - title: "About"
+    url: "/about/"
+  - title: "Posts"
+    url: "/posts/"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
