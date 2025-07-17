@@ -7,4 +7,4 @@ tags: [ipynb]
 ---
 
 Here is a link to a Jupyter notebook:
-- [Download Jupyter Notebook]({{ site.baseurl }}/assets/code/nb_test1.ipynb) 
+- [nb_test1.ipynb](https://github.com/qsongatwpi/blogs1/blob/main/assets/code/nb_test1.ipynb)
