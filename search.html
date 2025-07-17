@@ -1,0 +1,141 @@
+---
+layout: default
+title: Search
+permalink: /search/
+---
+
+<div class="search-page">
+  <div class="search-container">
+    <h1>Search Posts</h1>
+    
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Search for posts..." autocomplete="off">
+      <button id="search-button" type="button">Search</button>
+    </div>
+    
+    <div id="search-results">
+      <div id="search-info"></div>
+      <div id="results-container"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script>
+  let searchIndex;
+  let searchData;
+
+  // Initialize search
+  async function initSearch() {
+    try {
+      const response = await fetch('{{ "/search.json" | relative_url }}');
+      searchData = await response.json();
+      
+      // Build search index
+      searchIndex = lunr(function () {
+        this.ref('id');
+        this.field('title', { boost: 10 });
+        this.field('content');
+        this.field('excerpt', { boost: 5 });
+        this.field('categories', { boost: 5 });
+        this.field('tags', { boost: 5 });
+
+        searchData.forEach((post, index) => {
+          this.add({
+            id: index,
+            title: post.title,
+            content: post.content,
+            excerpt: post.excerpt,
+            categories: post.categories.join(' '),
+            tags: post.tags.join(' ')
+          });
+        });
+      });
+      
+      console.log('Search index built successfully');
+    } catch (error) {
+      console.error('Error building search index:', error);
+    }
+  }
+
+  // Perform search
+  function performSearch(query) {
+    if (!searchIndex || !query.trim()) {
+      displayResults([], query);
+      return;
+    }
+
+    const results = searchIndex.search(query);
+    displayResults(results, query);
+  }
+
+  // Display search results
+  function displayResults(results, query) {
+    const searchInfo = document.getElementById('search-info');
+    const resultsContainer = document.getElementById('results-container');
+    
+    if (!query.trim()) {
+      searchInfo.innerHTML = '';
+      resultsContainer.innerHTML = '';
+      return;
+    }
+
+    if (results.length === 0) {
+      searchInfo.innerHTML = `<p>No results found for "<strong>${query}</strong>"</p>`;
+      resultsContainer.innerHTML = '';
+      return;
+    }
+
+    searchInfo.innerHTML = `<p>Found ${results.length} result${results.length > 1 ? 's' : ''} for "<strong>${query}</strong>"</p>`;
+    
+    let html = '';
+    results.forEach(result => {
+      const post = searchData[result.ref];
+      html += `
+        <article class="search-result">
+          <h3><a href="${post.url}">${post.title}</a></h3>
+          <div class="result-meta">
+            <time>${post.date}</time>
+            ${post.categories.length > 0 ? `<span class="categories">${post.categories.map(cat => `<span class="category">${cat}</span>`).join('')}</span>` : ''}
+          </div>
+          <p class="result-excerpt">${post.excerpt}</p>
+        </article>
+      `;
+    });
+    
+    resultsContainer.innerHTML = html;
+  }
+
+  // Event listeners
+  document.addEventListener('DOMContentLoaded', function() {
+    initSearch();
+    
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.getElementById('search-button');
+    
+    // Search on input
+    searchInput.addEventListener('input', function() {
+      performSearch(this.value);
+    });
+    
+    // Search on button click
+    searchButton.addEventListener('click', function() {
+      performSearch(searchInput.value);
+    });
+    
+    // Search on Enter key
+    searchInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        performSearch(this.value);
+      }
+    });
+
+    // Check for search query in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get('q');
+    if (query) {
+      searchInput.value = query;
+      performSearch(query);
+    }
+  });
+</script>

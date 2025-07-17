@@ -47,6 +47,13 @@
           {% endfor %}
         </div>
         
+        <div class="header-search">
+          <form action="{{ '/search/' | relative_url }}" method="get" class="search-form">
+            <input type="text" name="q" placeholder="Search..." class="search-input-mini">
+            <button type="submit" class="search-btn-mini">🔍</button>
+          </form>
+        </div>
+        
         <button class="nav-toggle" aria-label="Toggle navigation">
           <span></span>
           <span></span>
