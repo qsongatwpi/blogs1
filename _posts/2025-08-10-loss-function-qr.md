@@ -13,8 +13,15 @@ For instance, if $\alpha = .5$, then it is the median estimator. It can also be 
 A convergence analysis on Quantile Regression with ReLU Networks is provided in a recent paper, see [this paper]({{ site.baseurl }}/assets/pdfs/PTC22_percentile.pdf).
 
 More specifically, the loss function in traditional setting is MSE given by
-$$\hat f = \arg\min_{f\in \mathcal F} \frac 1 n \sum_{i=1}^n (y_i - f(x_i))^2,$$
-while the loss function associated to the quantile regression is given by
+
+$$\hat f = \arg\min_{f\in \mathcal F}  \sum_{i=1}^n (y_i - f(x_i))^2,$$
+
+while the loss function associated to the quantile regression with confidence level $\alpha$ is given by
+
 $$
-\hat f = 
+\hat f = \arg\min_{f\in \mathcal F}  \sum_{i=1}^n \rho_\alpha (y_i -f(x_i)),
 $$
+
+where $\rho_\alpha$ is
+
+$$\rho_\theta(x) = \alpha x^+ + (1-\alpha) x^-.$$
