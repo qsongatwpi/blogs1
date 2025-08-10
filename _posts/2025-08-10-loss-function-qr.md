@@ -35,3 +35,19 @@ The loss function is originally proposed in [this paper]({{site.baseurl}}/assets
 
 $$q_\alpha = \arg\min_{q \in \mathbb{R}} \mathbb{E}[\rho_\alpha(Y - q)].$$
 
+**Proof.** Let $g(q) = \mathbb{E}[\rho_\alpha(Y - q)]$. We need to show that $g(q)$ is minimized at $q = q_\alpha$. For simplicity, we assume $F$ is continuous and strictly increasting.
+
+First, we expand the expectation:
+$$g(q) = \mathbb{E}[\rho_\alpha(Y - q)] = \alpha \mathbb{E}[(Y - q)^+] + (1-\alpha) \mathbb{E}[(Y - q)^-].$$
+
+We can rewrite this as:
+$$g(q) = \alpha \mathbb{E}[(Y - q) \mathbf{1}_{Y \geq q}] + (1-\alpha) \mathbb{E}[(q - Y) \mathbf{1}_{Y < q}],$$
+
+where $\mathbf{1}_{A}$ is the indicator function of event $A$.
+
+Taking the derivative with respect to $q$:
+$$g'(q) = -\alpha \mathbb{P}(Y \geq q) + (1-\alpha) \mathbb{P}(Y < q)
+=  F(q) - \alpha
+.$$
+
+Setting $g'(q) = 0$, we conclude the desired result. $\square$
