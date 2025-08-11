@@ -31,7 +31,8 @@ In the above, $x^+$ and $x^-$ denote the positive and negative parts of $x$, res
 The loss function is originally proposed in [this paper]({{site.baseurl}}/assets/pdfs/KB78.pdf). The essence of this loss function lies at the following fact:
 
 
-**Theorem.** Let $Y$ be a random variable with distribution function $F$. Then for any $\alpha \in (0,1)$, the $\alpha$-quantile of $Y$, defined as $q_\alpha = \inf\{y : F(y) \geq \alpha\}$, is the minimizer of the expected loss function:
+**Theorem.** Let $Y$ be a random variable with distribution function $F$. Then for any $\alpha \in (0,1)$, the $\alpha$-quantile of $Y$, defined as 
+$q_\alpha = \inf(y : F(y) \geq \alpha)$, is the minimizer of the expected loss function:
 
 $$q_\alpha = \arg\min_{q \in \mathbb{R}} \mathbb{E}[\rho_\alpha(Y - q)].$$
 
