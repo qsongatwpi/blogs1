@@ -23,10 +23,6 @@ github_username: qsongatwpi
 
 # Navigation
 navigation:
-  - title: "Home"
-    url: "/"
-  - title: "About"
-    url: "/about/"
   - title: "Posts"
     url: "/posts/"
   - title: "Search"
