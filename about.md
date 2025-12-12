@@ -9,18 +9,11 @@ permalink: /about/
     <h1>About Me</h1>
     
     <div class="about-intro">
-      <p>Hello! I'm a passionate writer and developer who loves sharing knowledge and experiences through this blog.</p>
+      <p>Hello! </p>
     </div>
 
     <div class="about-details">
-      <h2>What I Write About</h2>
-      <ul>
-        <li><strong>Technology:</strong> Latest trends, tools, and frameworks in the tech world</li>
-        <li><strong>Programming:</strong> Code tutorials, best practices, and problem-solving approaches</li>
-        <li><strong>Personal Growth:</strong> Lessons learned, productivity tips, and career insights</li>
-        <li><strong>Life:</strong> Random thoughts, experiences, and perspectives on various topics</li>
-      </ul>
-
+      
       <h2>My Background</h2>
       <p>I have a background in software development and a passion for continuous learning. I believe in the power of sharing knowledge and helping others grow in their journey.</p>
 
