@@ -485,7 +485,8 @@ a:hover {
 }
 
 .post-item h2 {
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .post-item h2 a {
