@@ -16,14 +16,12 @@ $$
 If $f$ satisfies this condition for $\lambda = 1/2$, it is called midpoint convex.
 If $f$ is $\lambda$-convex for any $\lambda \in (0,1)$, then it is fully convex.
 
-\begin{proposition}
-If $f:(0,1)\mapsto \mathbb R$ satisfies midipoint convexity and local upper boundedness, then 
-\begin{itemize}
-\item $f$ is locally bounded;
-\item If $f$ is $\lambda$-convex for $\lambda = \frac{k}{2^n}$ for $n\in \mathbb N$ and $k = 0, \ldots, 2^n$.
-\item $f$ is locally Lipschitz;
-\item $f$ is fully convex.
-\end{itemize}
+**Proposition.** *If $f:(0,1) \to \mathbb R$ satisfies midpoint convexity and local upper boundedness, then*
+
+*   *$f$ is locally bounded;*
+*   *$f$ is $\lambda$-convex for $\lambda = \frac{k}{2^n}$ where $n\in \mathbb N$ and $k = 0, \ldots, 2^n$;*
+*   *$f$ is locally Lipschitz;*
+*   *$f$ is fully convex.*
 
 To be completed ...
 
