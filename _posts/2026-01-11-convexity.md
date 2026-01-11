@@ -16,10 +16,23 @@ $$
 If $f$ satisfies this condition for $\lambda = 1/2$, it is called midpoint convex.
 If $f$ is $\lambda$-convex for any $\lambda \in (0,1)$, then it is fully convex.
 
+
+To proceed, we define
+the set of **dyadic numbers** (or dyadic rationals), denoted by $\mathbb{D}$, 
+as the set of rational numbers of the form:
+
+$$
+\mathbb{D} = \cup_{n=0}^\infty \mathbb{D}_n,
+$$
+where 
+$$ \mathbb{D}_n =  \left\{ \frac{k}{2^n} \;\middle|\; k = 0, \ldots, n \right\}.
+$$
+
+
 **Proposition.** *If $f:(0,1) \to \mathbb R$ satisfies midpoint convexity and local upper boundedness, then*
 
 *   *$f$ is locally bounded;*
-*   *$f$ is $\lambda$-convex for $\lambda = \frac{k}{2^n}$ where $n\in \mathbb N$ and $k = 0, \ldots, 2^n$;*
+*   *$f$ is $\lambda$-convex for any dyadic number $\lambda$;*
 *   *$f$ is locally Lipschitz;*
 *   *$f$ is fully convex.*
 
