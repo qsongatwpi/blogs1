@@ -23,6 +23,5 @@ If $f$ is $\lambda$-convex for any $\lambda \in (0,1)$, then it is fully convex.
 *   *$f$ is locally Lipschitz;*
 *   *$f$ is fully convex.*
 
-To be completed ...
-
-
+**Proof.**
+* For local boundedness, it is enough to show that $f$ is locally lower bounded.
