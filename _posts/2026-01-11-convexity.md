@@ -25,7 +25,7 @@ $$
 \mathbb{D} = \cup_{n=0}^\infty \mathbb{D}_n,
 $$
 where 
-$$ \mathbb{D}_n =  \left\{ \frac{k}{2^n} \;\middle|\; k = 0, \ldots, n \right\}.
+$$ \mathbb{D}_n =  \left\{ \frac{k}{2^n} \;\middle|\; k = 0, \ldots, 2^n \right\}.
 $$
 
 
