@@ -38,3 +38,5 @@ $$
 
 **Proof.**
 * For local boundedness, it is enough to show that $f$ is locally lower bounded.
+Fix arbitrary $x_0 \in (0,1)$, we want to show there exist $\epsilon, M>0$ dependent to $x_0$ such that
+
