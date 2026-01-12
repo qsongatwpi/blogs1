@@ -9,10 +9,12 @@ tags: [convexity, local boundedness, proof]
 We will prove that midpoint convexity implies full convexity under mild conditions.
 
 First, let's define these terms. We say a function $f:(0,1) \to \mathbb R$ is $\lambda$-convex if
+
 $$
 f(\lambda x + (1-\lambda)y) \le \lambda f(x) + (1-\lambda) f(y), \quad
 \forall x, y \in (0,1).
 $$
+
 If $f$ satisfies this condition for $\lambda = 1/2$, it is called midpoint convex.
 If $f$ is $\lambda$-convex for any $\lambda \in (0,1)$, then it is fully convex.
 
@@ -36,7 +38,4 @@ $$
 *   *$f$ is locally Lipschitz;*
 *   *$f$ is fully convex.*
 
-**Proof.**
-* For local boundedness, it is enough to show that $f$ is locally lower bounded.
-Fix arbitrary $x_0 \in (0,1)$, we want to show there exist $\epsilon, M>0$ dependent to $x_0$ such that
-
+ available in [this PDF](/assets/pdfs/convexity.pdf).

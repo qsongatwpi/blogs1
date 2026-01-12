@@ -1,0 +1,131 @@
+\documentclass[12pt, reqno]{amsart}
+
+% Standard AMS packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+% Optional packages for better formatting and utilities
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+% Geometry settings
+\geometry{
+    letterpaper,
+    left=1in,
+    right=1in,
+    top=1in,
+    bottom=1in
+}
+
+% Theorem environments
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% document metadata
+\title{From the Midpoint Convexity to Full Convexity}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Abstract}
+    We will prove that midpoint convexity implies full convexity under mild conditions.
+
+\section*{Notes}
+First, let's define these terms. We say a function $f:(0,1) \to \mathbb R$ is $\lambda$-convex if
+$$
+f(\lambda x + (1-\lambda)y) \le \lambda f(x) + (1-\lambda) f(y), \quad
+\forall x, y \in (0,1).
+$$
+If $f$ satisfies this condition for $\lambda = 1/2$, it is called midpoint convex.
+If $f$ is $\lambda$-convex for any $\lambda \in (0,1)$, then it is fully convex.
+
+To proceed, we define
+the set of dyadic numbers (or dyadic rationals), denoted by $\mathbb{D}$, 
+as the set of rational numbers of the form:
+
+$$
+\mathbb{D} = \cup_{n=0}^\infty \mathbb{D}_n,
+$$
+where 
+$$ \mathbb{D}_n =  \left\{ \frac{k}{2^n} \;\middle|\; k = 0, \ldots, 2^n \right\}.
+$$
+
+
+\begin{proposition}
+    If $f:(0,1) \to \mathbb R$ satisfies midpoint convexity and is locally bounded above, then
+    \begin{enumerate}
+        \item $f$ is locally bounded;
+        \item $f$ is $\lambda$-convex for any dyadic number $\lambda$;
+        \item $f$ is locally Lipschitz;
+        \item $f$ is fully convex.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \begin{enumerate}
+        \item \textbf{Local boundedness:} Since 
+        $f$ is locally upper bounded, it's enough
+        to show that $f$ is locally lower bounded.
+        Fix $x_0 \in (0,1)$. We set 
+        $$ \delta = \min\{x_0, 1-x_0\}/2.$$
+        By assumption, there exists $M \in \mathbb R$ such that
+        $$M = \sup_{x \in (x_0 - \delta, x_0 + \delta)} f(x) < +\infty.$$
+        For any $x \in (x_0 - \delta, x_0 + \delta)$, we set $y = 2 x_0 - x$.
+        Note that $y \in (x_0 - \delta, x_0 + \delta)$ as well.
+        By midpoint convexity, we have
+        $$ f(x) \ge 2 f(x_0) - f(y) \ge 2 f(x_0) - M.$$
+        This shows that $f$ is locally lower bounded on $(0,1)$.
+        \item \textbf{Dyadic convexity:} 
+        Let $G$ be the set of $\lambda \in [0,1]$ such that $f$ is $\lambda$-convex.
+        Immediately from the definition, we have $\mathbb D_0 = \{0,1\} \subset G$.
+        Assume that $\mathbb D_n \subset G$ for some $n \ge 0$.
+        We will show that $\mathbb D_{n+1} \subset G$.
+        Indeed, if $\lambda_1, \lambda_2 \in G$, then by midpoint convexity,
+        we have $\frac{\lambda_1 + \lambda_2}{2} \in G$ as well.
+        Since any element in $\mathbb D_{n+1}$ is the average of two
+        elements in $\mathbb D_n$, we conclude that $\mathbb D_{n+1} \subset G$.
+        By induction, we have $\mathbb D_n \subset G$ for all $n \ge 0$,
+        and hence $\mathbb D \subset G$.
+        \item \textbf{Local Lipschitz continuity:} Fix $x_0 \in (0,1)$.
+        We set 
+        $$ \delta = \min\{x_0, 1-x_0\}/4.$$
+        By local boundedness, there exists $M > 0$ such that
+        $$ |f(x)| \le M, \quad \forall x \in (x_0 - 2\delta, x_0 + 2\delta).$$
+        Now, we show that $f$ is Lipschitz on $(x_0 - \delta, x_0 + \delta)$
+        with a bounded Lipschitz constant. Choose 
+        any $x< y \in (x_0 - \delta, x_0 + \delta)$.
+        Let $z_n = \max \{y + \delta_n | \delta_n \in \mathbb D_n \cap (0, \delta)\}$.
+        Note that 
+        $$z_n = y + \delta_n \to y + \delta = z < x_0 + 2\delta \text{ as } n \to \infty.$$
+        By dyadic convexity, we have
+        $$\frac{f(y) - f(x)}{y - x} \le \frac{f(z_n) - f(y)}{z_n - y} \le \frac{1}{\delta_n} \cdot 2M \to \frac{2M}{\delta}, 
+        \text{ as } n \to \infty.$$
+        This shows the upper bound of Lipschitz constant on $(x_0 - \delta, x_0 + \delta)$.
+        Similarly, we can take $w_n = \min \{x - \delta_n | \delta_n \in \mathbb D_n \cap (0, \delta)\}$. 
+        Then, we have
+        $$ \frac{f(x) - f(y)}{x - y} \ge \frac{f(x) - f(w_n)}{x - w_n} \ge 
+        \frac{1}{\delta_n} \cdot (-2M) \to \frac{-2M}{\delta}, \text{ as } n \to \infty.$$ 
+        This shows the lower bound of Lipschitz constant on $(x_0 - \delta, x_0 + \delta)$.
+        \item \textbf{Full convexity:} Full convexity follows from continuity and dyadic convexity.  
+    \end{enumerate}
+\end{proof}
+
+\end{document}
