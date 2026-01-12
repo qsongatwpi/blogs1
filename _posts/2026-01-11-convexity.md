@@ -38,4 +38,4 @@ $$
 *   *$f$ is locally Lipschitz;*
 *   *$f$ is fully convex.*
 
- available in [this PDF]({{site.baseurl}}/assets/pdfs/convexity.pdf).
+ The proof is available in [this PDF]({{site.baseurl}}/assets/pdfs/convexity.pdf).
