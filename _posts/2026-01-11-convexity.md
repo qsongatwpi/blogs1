@@ -19,23 +19,22 @@ If $f$ satisfies this condition for $\lambda = 1/2$, it is called midpoint conve
 If $f$ is $\lambda$-convex for any $\lambda \in (0,1)$, then it is fully convex.
 
 
-To proceed, we define
-the set of **dyadic numbers** (or dyadic rationals), denoted by $\mathbb{D}$, 
-as the set of rational numbers of the form:
+**Proposition.** If $f:(0,1) \to \mathbb R$ satisfies midpoint convexity and local upper boundedness, then $f$ is fully convex. $\Box$
+
+The proof can be completed by establishing the following smaller results in order:
+
+*   The function $f$ is locally bounded;
+*   It is $\lambda$-convex for any dyadic number $\lambda$;
+*   $f$ is locally Lipschitz;
+*   Finally, $f$ is fully convex.
+
+In the above, the set of **dyadic numbers** (or dyadic rationals), often denoted by $\mathbb{D}$, is the set of rational numbers of the form:
 
 $$
 \mathbb{D} = \cup_{n=0}^\infty \mathbb{D}_n,
 $$
-where 
-$$ \mathbb{D}_n =  \left\{ \frac{k}{2^n} \;\middle|\; k = 0, \ldots, 2^n \right\}.
+where
+$$ \mathbb{D}_n = \left\{ \frac{k}{2^n} \;\middle|\; k = 0, \ldots, 2^n \right\}.
 $$
 
-
-**Proposition.** *If $f:(0,1) \to \mathbb R$ satisfies midpoint convexity and local upper boundedness, then*
-
-*   *$f$ is locally bounded;*
-*   *$f$ is $\lambda$-convex for any dyadic number $\lambda$;*
-*   *$f$ is locally Lipschitz;*
-*   *$f$ is fully convex.*
-
- The proof is available in [this PDF]({{site.baseurl}}/assets/pdfs/convexity.pdf).
+The proof is detailed in [this PDF]({{site.baseurl}}/assets/pdfs/convexity.pdf).
