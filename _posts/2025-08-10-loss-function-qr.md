@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A minimization problem realted to the loss function to quantile regression"
+title: "A minimization problem related to the loss function to quantile regression"
 date: 2025-08-10 10:00:00 -0000
 categories: [mathematics, machine learning]
 tags: [latex, math, quantile regression]
