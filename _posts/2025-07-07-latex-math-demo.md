@@ -132,12 +132,12 @@ $$
 
 To include math in your posts, use these syntaxes:
 
-- **Inline math**: `$your_equation$` or `\\(your_equation\\)`
-- **Display math**: `$$your_equation$$` or `\\[your_equation\\]`
+- **Inline math**: `$your_equation$`
+- **Display math**: `$$your_equation$$`
 
 ### Examples:
 
-```latex
+```markdown
 Inline: $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$
 
 Display:

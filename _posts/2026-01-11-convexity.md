@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "From midpoint convexity to full convexity"
-date: 2025-08-10 10:00:00 -0000
+date: 2026-01-11 10:00:00 -0000
 categories: [mathematics, analysis]
 tags: [convexity, local boundedness, proof]
 ---
