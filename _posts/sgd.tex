@@ -1,0 +1,56 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Stochastic Gradient Descent and the Langevin Equation}
+\author{Analysis of Continuous-Time Asymptotics}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Stochastic Gradient Descent (SGD) is a discrete-time optimization algorithm widely used in machine learning. Under the regime of a small learning rate $\eta$, its dynamics can be accurately modeled by a continuous-time stochastic differential equation (SDE), specifically the Overdamped Langevin Equation.
+
+\section{The SGD Update Mechanism}
+Consider an objective function $J(\theta)$ which is the mean of individual loss functions $J_i(\theta)$ over a dataset of size $n$:
+\begin{equation}
+J(\theta) = \frac{1}{n} \sum_{i=1}^{n} J_i(\theta)
+\end{equation}
+
+The standard SGD update at step $k$ for a randomly sampled index $i \in \{1, \dots, n\}$ is:
+\begin{equation}
+\theta_{k+1} = \theta_k - \eta \nabla J_i(\theta_k)
+\end{equation}
+
+\section{Decomposition of the Gradient}
+To understand the relationship between SGD and the true gradient descent path, we decompose the stochastic gradient into the full gradient and a noise term:
+\begin{equation}
+\nabla J_i(\theta_k) = \nabla J(\theta_k) + \xi_k
+\end{equation}
+where $\xi_k = \nabla J_i(\theta_k) - \nabla J(\theta_k)$. By definition, the noise term has zero mean, $\mathbb{E}[\xi_k | \theta_k] = 0$.
+
+The update rule can be rewritten as:
+\begin{equation}
+\theta_{k+1} - \theta_k = - \eta \nabla J(\theta_k) - \eta \xi_k
+\end{equation}
+
+\section{Continuous-Time Asymptotic (Langevin Limit)}
+In the limit where $\eta \to 0$, we define a continuous-time process $\theta_t$ such that $\theta_k \approx \theta_{k\eta}$. Treating the noise term as a diffusion process, the trajectory follows the Langevin equation:
+\begin{equation}
+d\theta_t = -\nabla J(\theta_t) dt + \sqrt{2\beta^{-1}} dW_t
+\end{equation}
+where $dW_t$ represents a Wiener process and $\beta$ is the inverse temperature parameter related to the learning rate and the covariance of the gradient noise $\xi$.
+
+\section{Significance}
+This mapping allows for several theoretical insights:
+\begin{itemize}
+    \item \textbf{Exploration:} The diffusion term allows $\theta$ to explore the landscape and escape local minima.
+    \item \textbf{Stationary Distribution:} The process converges to the Gibbs distribution $p(\theta) \propto e^{-\beta J(\theta)}$.
+    \item \textbf{Stability:} The continuous form makes it easier to apply tools from calculus and PDE theory to study convergence rates.
+\end{itemize}
+
+\end{document}
