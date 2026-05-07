@@ -13,44 +13,74 @@
 \maketitle
 
 \section{Introduction}
+
 Stochastic Gradient Descent (SGD) is a discrete-time optimization algorithm widely used in machine learning. Under the regime of a small learning rate $\eta$, its dynamics can be accurately modeled by a continuous-time stochastic differential equation (SDE), specifically the Overdamped Langevin Equation.
 
 \section{The SGD Update Mechanism}
+
 Consider an objective function $J(\theta)$ which is the mean of individual loss functions $J_i(\theta)$ over a dataset of size $n$:
-\begin{equation}
-J(\theta) = \frac{1}{n} \sum_{i=1}^{n} J_i(\theta)
-\end{equation}
+
+$$
+J(\theta) = \frac{1}{n} \sum_{i=1}^{n} J_i(\theta).
+$$
 
 The standard SGD update at step $k$ for a randomly sampled index $i \in \{1, \dots, n\}$ is:
-\begin{equation}
+
+$$
 \theta_{k+1} = \theta_k - \eta \nabla J_i(\theta_k)
-\end{equation}
+$$
 
-\section{Decomposition of the Gradient}
+For simplicity, we abbreviated $i(k)$ as $i$.
+The goal is to find the parameter $\theta$ that minimizes $J(\theta)$.
+
+\subsection{Decomposition of the Gradient}
+
 To understand the relationship between SGD and the true gradient descent path, we decompose the stochastic gradient into the full gradient and a noise term:
-\begin{equation}
+
+$$
 \nabla J_i(\theta_k) = \nabla J(\theta_k) + \xi_k
-\end{equation}
-where $\xi_k = \nabla J_i(\theta_k) - \nabla J(\theta_k)$. By definition, the noise term has zero mean, $\mathbb{E}[\xi_k | \theta_k] = 0$.
+$$
 
+where $\xi_k = \nabla J_i(\theta_k) - \nabla J(\theta_k)$. 
+Again, $\xi_k$ depends on the random index $i$ chosen at step $k$ and 
+the parameter $\theta_k$, but we abbreviate the notation for simplicity.
+
+The gradients $\nabla J_i(\theta_k)$ are i.i.d. given $\theta_k$ since 
+they are computed from randomly sampled data points. If $n$ is large, 
+the Law of Large Numbers implies that
+
+$$ \nabla J(\theta_k) \approx \mathbb E [\nabla J_1(\theta_k) | \theta_k], $$
+
+which allows us to treat $\xi_k$ as i.i.d. 
+normal random variables with zero mean and some covariance 
+$\beta>0$, i.e. 
+
+$$\xi_k \sim \mathcal{N}(0, \beta I).$$
+
+(Indeed, $\beta_k$ shall be dependent on $\theta_k$.) 
 The update rule can be rewritten as:
-\begin{equation}
-\theta_{k+1} - \theta_k = - \eta \nabla J(\theta_k) - \eta \xi_k
-\end{equation}
 
-\section{Continuous-Time Asymptotic (Langevin Limit)}
-In the limit where $\eta \to 0$, we define a continuous-time process $\theta_t$ such that $\theta_k \approx \theta_{k\eta}$. Treating the noise term as a diffusion process, the trajectory follows the Langevin equation:
-\begin{equation}
-d\theta_t = -\nabla J(\theta_t) dt + \sqrt{2\beta^{-1}} dW_t
-\end{equation}
-where $dW_t$ represents a Wiener process and $\beta$ is the inverse temperature parameter related to the learning rate and the covariance of the gradient noise $\xi$.
+$$
+\theta_{k+1} - \theta_k = - \eta \nabla J(\theta_k) - \eta \sqrt{\beta} Z_k,$$
 
-\section{Significance}
-This mapping allows for several theoretical insights:
-\begin{itemize}
-    \item \textbf{Exploration:} The diffusion term allows $\theta$ to explore the landscape and escape local minima.
-    \item \textbf{Stationary Distribution:} The process converges to the Gibbs distribution $p(\theta) \propto e^{-\beta J(\theta)}$.
-    \item \textbf{Stability:} The continuous form makes it easier to apply tools from calculus and PDE theory to study convergence rates.
-\end{itemize}
+where $Z_k \sim \mathcal{N}(0, I)$ is i.i.d. standard normal random variables.
+
+
+\subsection{Continuous-Time Asymptotic (Langevin Limit)}
+
+In the limit where $\eta \to 0$, we define a continuous-time process $\theta_t$ such that $\theta_k \approx \theta_{k\eta}$. 
+We introduce a standard Brownian motion $W_t$ and using the fact that 
+
+$$\sqrt{\eta} Z_k \approx W_{(k+1)\eta} - W_{k\eta},$$
+
+
+the trajectory follows the Langevin equation:
+
+$$
+d\theta_t = -\nabla J(\theta_t) dt + \sqrt{\eta \beta} dW_t
+$$
+
+where $dW_t$ represents a Wiener process and the volatility term $\sqrt{\eta \beta}$ 
+is the temperature parameter related to the learning rate and the covariance of the gradient noise $\xi$.
 
 \end{document}
