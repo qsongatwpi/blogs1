@@ -83,4 +83,19 @@ $$
 where $dW_t$ represents a Wiener process and the volatility term $\sqrt{\eta \beta}$ 
 is the temperature parameter related to the learning rate and the covariance of the gradient noise $\xi$.
 
+\section{Further remarks}
+In SGD, the minimizer was searched by one agent. 
+With increasing power of parallel computing, it is natural to consider the case where multiple agents are searching for the minimizer simultaneously.
+In this case, we still consider the same objective function
+
+$$J(\theta) = \frac{1}{n} \sum_{i=1}^{n} J_i(\theta)$$
+
+but the update rule is modified to
+
+$$\theta_{k+1}^{(j)} = \theta_k^{(j)} - \eta_1 \nabla J_{i}(\theta_k^{(j)}) + \eta_2 (\theta_k^{(j)} - \bar \theta_k),$$
+
+where $\bar \theta_k = \frac{1}{m} \sum_{j=1}^{m} \theta_k^{(j)}$ is the average of the parameters across $m$ agents, 
+and $\eta_1, \eta_2>0$ are the learning rates for the gradient descent and the consensus term, respectively.
+Initially, the parameters $\theta_0^{(j)}$ can be randomly spread across the parameter space to encourage exploration.
+
 \end{document}
