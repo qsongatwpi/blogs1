@@ -6,10 +6,6 @@ categories: [machine learning]
 tags: [Q-Learning, Stochastic Approximation]
 ---
 
-# Foundations of Reinforcement Learning: MDPs and Q-Learning
-
-*Reinforcement Learning Primer*
-
 ## The Markov Decision Process (MDP) Framework
 
 The control problem in reinforcement learning is formally defined using a Markov Decision Process, represented by the tuple $(\mathcal{S}, \mathcal{A}, P, R, \gamma)$.
@@ -91,4 +87,4 @@ $$
 
 The above Q-learning algorithm is pure exploitation (zero-greedy). In practice, we often use an $\epsilon$-greedy policy to balance exploration and exploitation during learning.
 
-The $\epsilon$-greedy policy selects a random action with probability $\epsilon$ and the action with the highest Q-value with probability $1 - \epsilon$.
+The $\epsilon$-greedy policy selects a random action with probability $\epsilon$ and the action with the highest Q-value with probability $1 - \epsilon$, see an implementation on FrozenLake [here](https://github.com/qsongatwpi/foo2/blob/main/src/qlearning_frozenlake.ipynb).
