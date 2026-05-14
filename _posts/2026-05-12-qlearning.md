@@ -57,7 +57,8 @@ $$
 
 ### Temporal Difference (TD) Update Rule
 
-It is well known in the literature of stochastic approximation (see [Ber86](../assets/pdfs/Ber86.pdf)) that the fixed point of
+It is well known in the literature of stochastic approximation ([here](https://github.com/qsongatwpi/foo2/blob/main/src/Ber86.pdf))
+that the fixed point of
 
 $$
 x = \mathbb{E}[f(x, \omega)]
