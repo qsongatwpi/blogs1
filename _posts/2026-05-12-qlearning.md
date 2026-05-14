@@ -82,7 +82,7 @@ where $\alpha$ is the **learning rate**.
 
 ## Control and Policy
 
-Once the Q-values converge to $Q^*$, the optimal policy $\pi^*$ is derived by selecting the action with the highest value in each state:
+Once the Q-values converge to $Q^{*}$, the optimal policy $\pi^{*}$ is derived by selecting the action with the highest value in each state:
 
 $$
 \pi^*(s) = \arg\max_{a \in \mathcal{A}} Q^*(s, a)
