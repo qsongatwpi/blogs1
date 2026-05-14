@@ -57,7 +57,7 @@ $$
 
 ### Temporal Difference (TD) Update Rule
 
-It is well known in the literature of stochastic approximation that the fixed point of
+It is well known in the literature of stochastic approximation (see [Ber86](../assets/pdfs/Ber86.pdf)) that the fixed point of
 
 $$
 x = \mathbb{E}[f(x, \omega)]
@@ -69,7 +69,9 @@ $$
 x_{n+1} = (1 - \alpha)x_n + \alpha f(x_n, \omega_n)
 $$
 
-where $\alpha$ is the learning rate. Applying this result to the Bellman optimality equation, we derive the Q-learning update rule:
+where $\alpha$ is the learning rate. Rearranging the above formula, we have $x_{n+1} = x_n + \alpha (f(x_n, \omega_n) - x_n)$, where the last term $f(x_n, \omega_n) - x_n$ is referred as 
+temporal difference. 
+Applying this result to the Bellman optimality equation, we derive the Q-learning update rule:
 
 $$
 Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]
